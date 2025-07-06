@@ -13,7 +13,7 @@ spec:
     chart: nginx
     helm:
       valueFiles:
-      - $values/cluster/default/argo-test-values.yaml
+      - $values/argo/cluster/default/argo-test-values.yaml
   - repoURL: 'https://github.com/scuffe82/helios.git'
     targetRevision: HEAD
     ref: values
