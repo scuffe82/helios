@@ -1,0 +1,28 @@
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+  name: "traefik-internal"
+
+ingressRoute:
+  dashboard:
+    enabled: true
+
+providers:
+  kubernetesCRD:
+    allowExternalNameServices: true
+    ingressClass: "traefik-internal"
+  kubernetesIngress:
+    allowExternalNameServices: true
+    ingressClass:  "traefik-internal"
+
+  kubernetesGateway:
+    enabled: true
+
+ports:
+  traefik:
+    expose:
+      default: true
+
+service:
+  spec:
+   loadBalancerIP: "10.0.1.110"

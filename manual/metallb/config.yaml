@@ -1,0 +1,8 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: 10-0-1-100-250-pool
+  namespace: networking
+spec:
+  addresses:
+  - 10.0.1.100-10.0.1.250

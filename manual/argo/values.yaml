@@ -1,0 +1,14 @@
+global:
+  domain: argocd.spenceops.com
+  addPrometheusAnnotations: false
+configs:
+  params:
+    server.insecure: true
+server:
+  name: Helios
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    ingressClassName: "traefik-internal"
