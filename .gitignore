@@ -1,3 +1,4 @@
 kubeconfig
 secret.yaml
 .envrc
+scratch/
