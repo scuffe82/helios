@@ -13,7 +13,10 @@ spec:
     chart: nginx
     helm:
       valueFiles:
-      - values.yaml
+      - $values/cluster/default/agro-test-values.yaml
+  - repoURL: 'git@github.com:scuffe82/helios.git'
+    targetRevision: HEAD
+    ref: values
   destination:
     namespace: default
     name: in-cluster
