@@ -9,7 +9,7 @@ spec:
     namespace: argocd
   source:
     path: cluster/
-    repoURL: 'git@github.com:scuffe82/helios.git'
+    repoURL: 'https://github.com/scuffe82/helios.git'
     targetRevision: HEAD
   project: default
   syncPolicy:
