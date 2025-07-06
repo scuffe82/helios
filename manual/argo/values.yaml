@@ -5,10 +5,11 @@ configs:
   params:
     server.insecure: true
 server:
-  name: Helios
+  name: helios
   ingress:
     enabled: true
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
     ingressClassName: "traefik-internal"
+    tls: true
