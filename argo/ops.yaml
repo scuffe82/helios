@@ -7,7 +7,7 @@ spec:
     name: in-cluster
     namespace: argocd
   source:
-    path: ../argo/helios/ops
+    path: argo/helios/ops
     repoURL: 'https://github.com/scuffe/helios'
     targetRevision: HEAD
   project: default
