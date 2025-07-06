@@ -9,6 +9,6 @@ spec:
     namespace: argocd
   source:
     path: testing/argo/apps
-    repoURL: 'https://github.com/scuffe/helios.git'
+    repoURL: 'https://github.com/scuffe/helios'
     targetRevision: HEAD
   project: default
