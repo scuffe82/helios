@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ops
+  name: app-of-apps-test
   namespace: argocd
 spec:
   destination:
     name: in-cluster
     namespace: argocd
   source:
-    path: argo/apps/
+    path: testing/argo/apps
     repoURL: 'https://github.com/scuffe/helios.git'
     targetRevision: HEAD
   project: default
