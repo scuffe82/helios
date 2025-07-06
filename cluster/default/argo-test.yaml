@@ -14,7 +14,7 @@ spec:
     helm:
       valueFiles:
       - $values/cluster/default/argo-test-values.yaml
-  - repoURL: 'git@github.com:scuffe82/helios.git'
+  - repoURL: 'https://github.com/scuffe82/helios.git'
     targetRevision: HEAD
     ref: values
   destination:
