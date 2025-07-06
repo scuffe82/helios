@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ops
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    path: helios/ops/
+    repoURL: 'https://github.com/scuffe82/helios.git'
+    targetRevision: HEAD
+  project: default
