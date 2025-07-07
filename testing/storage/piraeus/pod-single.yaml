@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: web-server
+    spec:
+      containers:
+        - name: web-server
+          image: nginx
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data-volume
