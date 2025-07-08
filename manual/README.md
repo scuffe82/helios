@@ -5,4 +5,4 @@ Deploy manual steps in this order
 #4 Metallb
 #5 Traefik
 #6 Argo
-
+#7 piraeus
