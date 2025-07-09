@@ -26,3 +26,6 @@ ports:
 service:
   spec:
    loadBalancerIP: "10.0.1.110"
+
+additionalArguments:
+  - "--serverstransport.insecureskipverify=true"
