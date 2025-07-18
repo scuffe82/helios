@@ -19,7 +19,7 @@ spec:
     path: argo/storage/synology/
     targetRevision: HEAD
   destination:
-    namespace: remote
+    namespace: storage
     name: in-cluster
   syncPolicy:
     automated: {}
