@@ -3,12 +3,24 @@ kind: Application
 metadata:
   name: nginx
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    name: in-cluster
-    namespace: argocd
-  source:
-    path: argo/remote/nginx/
-    repoURL: 'https://github.com/scuffe82/helios'
-    targetRevision: HEAD
   project: default
+  sources:
+  - repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: '21.0.3'
+    chart: nginx
+    helm:
+      valueFiles:
+      - $values/argo/remote/nginx/nginx-values.yaml
+  - repoURL: 'https://github.com/scuffe82/helios.git'
+    targetRevision: HEAD
+    ref: values
+  destination:
+    namespace: remote
+    name: in-cluster
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - ServerSideApply=true
