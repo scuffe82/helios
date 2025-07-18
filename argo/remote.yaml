@@ -11,4 +11,6 @@ spec:
     path: argo/remote/
     repoURL: 'https://github.com/scuffe82/helios'
     targetRevision: HEAD
+    directory:
+      recurse: true
   project: default
