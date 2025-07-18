@@ -45,6 +45,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webtop
+  namespace: remote
   labels:
     app: webtop
 spec:
