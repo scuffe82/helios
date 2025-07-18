@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: nginx
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
@@ -13,18 +11,14 @@ spec:
     chart: nginx
     helm:
       valueFiles:
-      - $values/testing/argo/apps/nginx/argo-test-values.yaml
+      - $values/testing/argo/apps/nginx/nginx-values.yaml
   - repoURL: 'https://github.com/scuffe82/helios.git'
     targetRevision: HEAD
     ref: values
   destination:
-    namespace: default
+    namespace: remote
     name: in-cluster
   syncPolicy:
     automated: {}
     syncOptions:
       - ServerSideApply=true
-
-
-
-
