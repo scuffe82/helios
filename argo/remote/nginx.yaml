@@ -11,10 +11,10 @@ spec:
     chart: nginx
     helm:
       valueFiles:
-      - https://github.com/scuffe82/helios/blob/main/argo/remote/nginx/nginx-values.yaml
-#  - repoURL: 'https://github.com/scuffe82/helios.git'
-#    targetRevision: HEAD
-#    ref: values
+      - $values/argo/remote/nginx/nginx-values.yaml
+  - repoURL: 'https://github.com/scuffe82/helios.git'
+    targetRevision: HEAD
+    ref: values
   destination:
     namespace: remote
     name: in-cluster
