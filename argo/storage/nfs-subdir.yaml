@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-subdir
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+    targetRevision: '4.0.18'
+    chart: nfs-subdir-external-provisioner
+    helm:
+      valueFiles:
+      - $values/argo/storage/nfs-subdir/nfs-subdir-values.yaml
+  - repoURL: 'https://github.com/scuffe82/helios.git'
+    targetRevision: HEAD
+    ref: values
+  destination:
+    namespace: storage
+    name: in-cluster
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - ServerSideApply=true

@@ -1,0 +1,16 @@
+nfs:
+  server: 10.0.0.10
+  path: /volume1/spenceops/
+  mountOptions:
+  volumeName: nfsProvisioner
+storageClass:
+  create: true
+  defaultClass: false
+  name: nfs-client
+  allowVolumeExpansion: true
+  reclaimPolicy: Delete
+  archiveOnDelete: true
+  # Specifies a template for creating a directory path via PVC metadata's such as labels, annotations, name or namespace.
+  # Ignored if value not set.
+  pathPattern: "${.PVC.namespace}-${.PVC.name}"
+  accessModes: ReadWriteMany
