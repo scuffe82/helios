@@ -15,6 +15,9 @@ spec:
   - repoURL: 'https://github.com/scuffe82/helios.git'
     targetRevision: HEAD
     ref: values
+  - repoURL: 'https://github.com/scuffe82/helios'
+    path: argo/storage/synology/
+    targetRevision: HEAD
   destination:
     namespace: remote
     name: in-cluster
