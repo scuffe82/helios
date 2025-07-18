@@ -11,4 +11,6 @@ spec:
     path: testing/argo/apps/
     repoURL: 'https://github.com/scuffe82/helios'
     targetRevision: HEAD
+    directory:
+      recurse: true
   project: default
