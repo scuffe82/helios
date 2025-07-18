@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: synology-csi
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://christian-schlichtherle.github.io/synology-csi-chart
+    targetRevision: '0.10.1'
+    chart: synology-csi
+    helm:
+      valueFiles:
+      - $values/argo/storage/synology/synology-values.yaml
+  - repoURL: 'https://github.com/scuffe82/helios.git'
+    targetRevision: HEAD
+    ref: values
+  destination:
+    namespace: remote
+    name: in-cluster
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - ServerSideApply=true

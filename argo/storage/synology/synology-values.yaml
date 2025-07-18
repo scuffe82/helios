@@ -1,0 +1,25 @@
+---
+clientInfoSecret:
+  create: false
+  name: "synology-csi-client-info"
+storageClasses:
+  iscsi-delete:
+    reclaimPolicy: Delete
+  iscsi-retain:
+    reclaimPolicy: Retain
+  nfs-delete:
+    mountOptions:
+      - vers=4
+    parameters:
+      protocol: nfs
+    reclaimPolicy: Delete
+  nfs-retain:
+    mountOptions:
+      - vers=4
+    parameters:
+      protocol: nfs
+    reclaimPolicy: Retain
+  smb-delete:
+    disabled: true
+  smb-retain:
+    disabled: true
