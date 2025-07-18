@@ -6,3 +6,5 @@ metadata:
 resources:
 - remote.yaml
 - storage.yaml
+- media.yaml
+- downloads.yaml
