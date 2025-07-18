@@ -1,8 +1,8 @@
 nfs:
   server: 10.0.0.10
-  path: /volume1/spenceops/
+  path: /volume1/spenceops/nfsProvisioner
   mountOptions:
-  volumeName: nfsProvisioner
+  volumeName: testnfs
 storageClass:
   create: true
   defaultClass: false
