@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-nfs
+  annotations:
+    storage-path: "test-nfs"
+spec:
+  containers:
+  - name: test-nfs
+    image: busybox:latest 
+    command:
+      - "/bin/sh"
+    args:
+      - "-c"
+      - "touch /mnt/SUCCESS-PERSISTANT && exit 0 || exit 1"
+    volumeMounts:
+      - name: test-nfs
+        mountPath: "/mnt"
+  restartPolicy: "Never"
+  volumes:
+    - name: test-nfs
+      persistentVolumeClaim:
+        claimName: test-nfs
