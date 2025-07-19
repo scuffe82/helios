@@ -28,6 +28,13 @@ spec:
           mountPath: "/media"
         - name: plex-dev
           mountPath: "/plex-dev"
+      env:
+      - name: TZ
+        value: 'America/Denver'
+      - name: PUID
+        value: '1027'
+      - name: PGID
+        value: '65536'
       volumes:
       - name: config
         persistentVolumeClaim:
