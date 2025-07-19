@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: downloads-media
+  labels:
+    type: downloads-momediaies
+spec:
+  capacity:
+    storage: 80Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.0.0.11
+    path: "/volume1/media/"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: downloads-media
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 80Ti
+  selector:
+    matchLabels:
+      type: downloads-media
+  storageClassName: ""
+  volumeName: downloads-media
+---

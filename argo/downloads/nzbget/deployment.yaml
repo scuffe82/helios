@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nzbget
+  namespace: downloads
+  labels:
+    app: nzbget
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nzbget
+  template:
+    metadata:
+      labels:
+        app: nzbget
+    spec:
+      containers:
+      - name: nzbget
+        image: nzbgetcom/nzbget:latest
+        ports:
+        - containerPort: 6789
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+        - name: media
+          mountPath: "/media"
+        - name: plex-dev
+          mountPath: "/plex-dev"
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: nzbget-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: downloads-media
+      - name: plex-dev
+        persistentVolumeClaim:
+          claimName: downloads-plex-dev
+    
