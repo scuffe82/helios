@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: overseerr
+  namespace: downloads
+  labels:
+    app: overseerr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: overseerr
+  template:
+    metadata:
+      labels:
+        app: overseerr
+    spec:
+      containers:
+      - name: overseerr
+        image: sctx/overseerr
+        ports:
+        - containerPort: 5055
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+        env:
+        - name: TZ
+          value: 'America/Denver'
+        - name: PUID
+          value: '1027'
+        - name: PGID
+          value: '65536'
+        - name: UMASK
+          value: '002'
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: overseerr-config
