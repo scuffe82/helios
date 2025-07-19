@@ -20,6 +20,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nzbget-config
+  namespace: downloads
 spec:
   accessModes:
     - ReadWriteMany
@@ -51,6 +52,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: downloads-plex-dev
+  namespace: downloads
 spec:
   accessModes:
     - ReadWriteOnce
