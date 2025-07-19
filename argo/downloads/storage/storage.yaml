@@ -18,6 +18,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: downloads-media
+  namespace: downloads
 spec:
   accessModes:
     - ReadWriteMany
