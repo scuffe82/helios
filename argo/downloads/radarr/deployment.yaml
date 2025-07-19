@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  namespace: downloads
+  labels:
+    app: radarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+      - name: radarr
+        image: ghcr.io/hotio/radarr:latest
+        ports:
+        - containerPort: 7878
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+        - name: media
+          mountPath: "/media"
+        env:
+        - name: TZ
+          value: 'America/Denver'
+        - name: PUID
+          value: '1027'
+        - name: PGID
+          value: '65536'
+        - name: UMASK
+          value: '002'
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: radarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: downloads-media
+    

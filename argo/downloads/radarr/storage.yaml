@@ -1,0 +1,34 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: radarr-config
+  labels:
+    type: radarr-config
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  iscsi:
+     targetPortal: 10.0.0.10:3260
+     iqn: iqn.2000-01.com.synology:crypteia.radarr
+     lun: 1
+     fsType: 'ext4'
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: radarr-config
+  namespace: downloads
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      type: radarr-config
+  storageClassName: ""
+  volumeName: radarr-config
